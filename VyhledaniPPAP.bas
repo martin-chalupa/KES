@@ -12,8 +12,8 @@ Sub SpusteniPPAP()
 Attribute SpusteniPPAP.VB_ProcData.VB_Invoke_Func = "Q\n14"
 
 Dim Okno As Integer
-Okno = MsgBox("Funkce makra:" & vbCrLf & "  - prohled·v· sloûku P:\PPAP_nakupovan˝ch dÌlu pro PPAP dÌl˘ dle kusovnÌku exportovanÈho z Xpertu" & vbCrLf & "  - hled· konkrÈtnÌ soubor dle klÌËovÈho slova " & Chr(34) & "KESapproved" & Chr(34) & vbCrLf & "  - v p¯ÌpadÏ, ûe je soubor nalezen, makro vytvo¯Ì kopii tohoto souboru na ploöe ve sloûce " _
-& Chr(34) & "PPAP komponent˘" & Chr(34) & vbCrLf & "  - pokud jsou ve sloûce dÌlu dalöÌ podsloûky oznaËenÈ letopoËty, makro najde nejnovÏjöÌ a tu prohled·v·" & vbCrLf & "  - pokud ve sloûce dÌlu (pop¯ÌpadÏ podsloûce roku) existuje pouze jeden soubor, makro zkopÌruje tento soubor do sloûky " & Chr(34) & "PPAP komponent˘" & Chr(34) & vbCrLf & "  - pro vodiËe makro prohled·v· i sloûky, kde je poslednÌ trojËÌslÌ nahrazeno " & Chr(34) & "XXX" & Chr(34) & " pop¯ÌpadÏ " & Chr(34) & "100" & Chr(34) & vbCrLf & vbCrLf & "V souËasnÈ dobÏ je pouze menöina soubor˘ oznaËena slovem " & Chr(34) & "KESapproved" & Chr(34) & "." & vbCrLf & vbCrLf & "PRO LEPäÕ FUNKCI MAKRA NEZAPOME“ PÿEJMENOVAT NALEZEN… A SCHV¡LEN… (KES) PPAP SOUBORY - DOPLNIT " & Chr(34) & "_KESapproved" & Chr(34) & "!!!" & vbCrLf & vbCrLf & "Opravdu chceö sputit toto makro?", vbQuestion + vbYesNo, "Vyhled·nÌ PPAP")
+Okno = MsgBox("Funkce makra:" & vbCrLf & "  - prohled√°v√° slo≈æku P:\PPAP_nakupovan√Ωch d√≠lu pro PPAP d√≠l√π dle kusovn√≠ku exportovan√©ho z Xpertu" & vbCrLf & "  - hled√° konkr√©tn√≠ soubor dle kl√≠√®ov√©ho slova " & Chr(34) & "KESapproved" & Chr(34) & vbCrLf & "  - v p√∏√≠pad√¨, ≈æe je soubor nalezen, makro vytvo√∏√≠ kopii tohoto souboru na plo≈°e ve slo≈æce " _
+& Chr(34) & "PPAP komponent√π" & Chr(34) & vbCrLf & "  - pokud jsou ve slo≈æce d√≠lu dal≈°√≠ podslo≈æky ozna√®en√© letopo√®ty, makro najde nejnov√¨j≈°√≠ a tu prohled√°v√°" & vbCrLf & "  - pokud ve slo≈æce d√≠lu (pop√∏√≠pad√¨ podslo≈æce roku) existuje pouze jeden soubor, makro zkop√≠ruje tento soubor do slo≈æky " & Chr(34) & "PPAP komponent√π" & Chr(34) & vbCrLf & "  - pro vodi√®e makro prohled√°v√° i slo≈æky, kde je posledn√≠ troj√®√≠sl√≠ nahrazeno " & Chr(34) & "XXX" & Chr(34) & " pop√∏√≠pad√¨ " & Chr(34) & "100" & Chr(34) & vbCrLf & vbCrLf & "V sou√®asn√© dob√¨ je pouze men≈°ina soubor√π ozna√®ena slovem " & Chr(34) & "KESapproved" & Chr(34) & "." & vbCrLf & vbCrLf & "PRO LEP≈†√ç FUNKCI MAKRA NEZAPOME√í P√òEJMENOVAT NALEZEN√â A SCHV√ÅLEN√â (KES) PPAP SOUBORY - DOPLNIT " & Chr(34) & "_KESapproved" & Chr(34) & "!!!" & vbCrLf & vbCrLf & "Opravdu chce≈° sputit toto makro?", vbQuestion + vbYesNo, "Vyhled√°n√≠ PPAP")
 If Okno = vbYes Then
   Call HledaniPPAP
 Else
@@ -45,18 +45,18 @@ On Error GoTo 0
 Application.DisplayAlerts = True
 
 If ActiveWorkbook.Sheets.Count = 1 Then
-  ActiveWorkbook.Sheets.Add(After:=Worksheets(Worksheets.Count)).Name = "PPAP komponent˘"
+  ActiveWorkbook.Sheets.Add(After:=Worksheets(Worksheets.Count)).Name = "PPAP komponent√π"
 End If
-ActiveWorkbook.Sheets("PPAP komponent˘").Cells.Clear
+ActiveWorkbook.Sheets("PPAP komponent√π").Cells.Clear
 
 Set FindKomponenty = ActiveWorkbook.Sheets(1).Range("A1:AZ1").Find(What:="Komponenty", LookIn:=xlValues)
 If FindKomponenty Is Nothing Then
-  Set FindKomponenty = ActiveWorkbook.Sheets(1).Range("A1:AZ1").Find(What:="»Ìslo dÌlu", LookIn:=xlValues)
+  Set FindKomponenty = ActiveWorkbook.Sheets(1).Range("A1:AZ1").Find(What:="√à√≠slo d√≠lu", LookIn:=xlValues)
 End If
 
 Set FindMatchcode = ActiveWorkbook.Sheets(1).Range("A1:AZ1").Find(What:="Matchcode", LookIn:=xlValues)
 If FindMatchcode Is Nothing Then
-  Set FindMatchcode = ActiveWorkbook.Sheets(1).Range("A1:AZ1").Find(What:="OznaËenÌ", LookIn:=xlValues)
+  Set FindMatchcode = ActiveWorkbook.Sheets(1).Range("A1:AZ1").Find(What:="Ozna√®en√≠", LookIn:=xlValues)
 End If
 
 FindKomponenty.EntireColumn.Copy (ActiveWorkbook.Sheets(2).Range("A1"))
@@ -65,13 +65,13 @@ ActiveWorkbook.Sheets(2).Range("A:B").RemoveDuplicates Columns:=1
 ActiveWorkbook.Sheets(2).Range("A1").EntireColumn.AutoFit
 ActiveWorkbook.Sheets(2).Range("B1").EntireColumn.AutoFit
 
-ActiveWorkbook.Sheets(2).Range("C1").Value = "PPAP dÌlu nalezen/nenalezen"
+ActiveWorkbook.Sheets(2).Range("C1").Value = "PPAP d√≠lu nalezen/nenalezen"
 ActiveWorkbook.Sheets(2).Range("C1").Font.Bold = True
-ActiveWorkbook.Sheets(2).Range("D1").Value = "Odkaz na PPAP dÌlu"
+ActiveWorkbook.Sheets(2).Range("D1").Value = "Odkaz na PPAP d√≠lu"
 ActiveWorkbook.Sheets(2).Range("D1").Font.Bold = True
-ActiveWorkbook.Sheets(2).Range("E1").Value = "Nutnost z·sahu uûivatele"
+ActiveWorkbook.Sheets(2).Range("E1").Value = "Nutnost z√°sahu u≈æivatele"
 ActiveWorkbook.Sheets(2).Range("E1").Font.Bold = True
-ActiveWorkbook.Sheets(2).Range("F1").Value = "Odkaz na p˘vodnÌ sloûku dÌlu"
+ActiveWorkbook.Sheets(2).Range("F1").Value = "Odkaz na p√πvodn√≠ slo≈æku d√≠lu"
 ActiveWorkbook.Sheets(2).Range("F1").Font.Bold = True
 
 PocetKomponent = ActiveWorkbook.Sheets(2).Cells(Rows.Count, 1).End(xlUp).Row
@@ -81,15 +81,15 @@ Uzivatel = StripAccent(Right(Application.UserName, Len(Application.UserName) - I
 Vytvoreni = Format(Now, "yyyy-mm-dd hh-mm-ss")
 
 On Error Resume Next
-If Not objFSO.FolderExists("C:\Users\" & Uzivatel & "\Desktop\PPAP komponent˘") Then
-  objFSO.CreateFolder "C:\Users\" & Uzivatel & "\Desktop\PPAP komponent˘"
+If Not objFSO.FolderExists("C:\Users\" & Uzivatel & "\Desktop\PPAP komponent√π") Then
+  objFSO.CreateFolder "C:\Users\" & Uzivatel & "\Desktop\PPAP komponent√π"
 End If
 If Err.Number > 0 Then SlozkaNeexistuje = True
 On Error GoTo 0
 
 On Error Resume Next
-If Not objFSO.FolderExists("C:\Users\" & Uzivatel & "\Desktop\PPAP komponent˘\" & Vytvoreni) Then
-  objFSO.CreateFolder "C:\Users\" & Uzivatel & "\Desktop\PPAP komponent˘\" & Vytvoreni
+If Not objFSO.FolderExists("C:\Users\" & Uzivatel & "\Desktop\PPAP komponent√π\" & Vytvoreni) Then
+  objFSO.CreateFolder "C:\Users\" & Uzivatel & "\Desktop\PPAP komponent√π\" & Vytvoreni
 End If
 If Err.Number > 0 Then SlozkaNeexistuje = True
 On Error GoTo 0
@@ -121,39 +121,39 @@ For i = 2 To PocetKomponent
     End If
     
     If ChybiPPAP = True And Prazdna = False And ChybiDil = False And ChybiRok = False Then
-      ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Ve sloûce (viz hyperlink) nebyl nalezen û·dn˝ soubor s klÌËov˝m slovem " & Chr(34) & "KESapproved" & Chr(34) & "."
-      ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Pokud sloûka obsahuje PPAP dÌlu, p¯ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & "."
+      ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Ve slo≈æce (viz hyperlink) nebyl nalezen ≈æ√°dn√Ω soubor s kl√≠√®ov√Ωm slovem " & Chr(34) & "KESapproved" & Chr(34) & "."
+      ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Pokud slo≈æka obsahuje PPAP d√≠lu, p√∏ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & "."
       ActiveWorkbook.Sheets(2).Cells(i, 6).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 6), Address:="P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice), TextToDisplay:="P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice)
       ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbRed
     ElseIf ChybiPPAP = True And Prazdna = True And ChybiDil = False Then
       If IsEmpty(CelyNazevSlozky) Then
-        ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Aktu·lnÌ sloûka (" & Komponent & ") neobsahuje û·dnÈ soubory."
+        ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Aktu√°ln√≠ slo≈æka (" & Komponent & ") neobsahuje ≈æ√°dn√© soubory."
         ActiveWorkbook.Sheets(2).Cells(i, 6).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 6), Address:="P:\PPAP_nakupovane dily\" & Komponent, TextToDisplay:="P:\PPAP_nakupovane dily\" & Komponent
         ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbRed
       Else
-        ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Aktu·lnÌ sloûka (" & CelyNazevSlozky(Pozice) & ") neobsahuje û·dnÈ soubory. Pokud je tato sloûka pr·zdn·, tak ji smaû."
+        ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Aktu√°ln√≠ slo≈æka (" & CelyNazevSlozky(Pozice) & ") neobsahuje ≈æ√°dn√© soubory. Pokud je tato slo≈æka pr√°zdn√°, tak ji sma≈æ."
         ActiveWorkbook.Sheets(2).Cells(i, 6).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 6), Address:="P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice), TextToDisplay:="P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice)
         ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbRed
       End If
     ElseIf ChybiDil = True Then
-      ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Sloûka dÌlu nebyla nalezena."
+      ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Slo≈æka d√≠lu nebyla nalezena."
       ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbRed
     ElseIf ChybiPPAP = True And ChybiRok = True Then
       If IsEmpty(CelyNazevSlozky) Then
-        ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "PPAP dÌlu nebyl nalezen. Ve sloûce dÌlu byla nalezena sloûka s jin˝m n·zvem neû je letopoËet."
-        ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Pokud sloûka obsahuje PPAP dÌlu, p¯ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & " a p¯esuÚ soubor do sloûky " & Komponent & "."
+        ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "PPAP d√≠lu nebyl nalezen. Ve slo≈æce d√≠lu byla nalezena slo≈æka s jin√Ωm n√°zvem ne≈æ je letopo√®et."
+        ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Pokud slo≈æka obsahuje PPAP d√≠lu, p√∏ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & " a p√∏esu√≤ soubor do slo≈æky " & Komponent & "."
         ActiveWorkbook.Sheets(2).Cells(i, 6).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 6), Address:="P:\PPAP_nakupovane dily\" & Komponent, TextToDisplay:="P:\PPAP_nakupovane dily\" & Komponent
         ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbRed
       Else
-        ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "PPAP dÌlu nebyl nalezen. Ve sloûce nebyla nalezena û·dn· sloûka."
-        ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Pokud sloûka obsahuje PPAP dÌlu, p¯ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & " a p¯esuÚ soubor do sloûky " & Komponent & "."
+        ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "PPAP d√≠lu nebyl nalezen. Ve slo≈æce nebyla nalezena ≈æ√°dn√° slo≈æka."
+        ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Pokud slo≈æka obsahuje PPAP d√≠lu, p√∏ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & " a p√∏esu√≤ soubor do slo≈æky " & Komponent & "."
         ActiveWorkbook.Sheets(2).Cells(i, 6).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 6), Address:="P:\PPAP_nakupovane dily\" & Komponent, TextToDisplay:="P:\PPAP_nakupovane dily\" & Komponent
         ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbRed
       End If
     End If
 Next i
 
-If SlozkaNeexistuje = True Then MsgBox ("Sloûka " & Chr(34) & "PPAP komponent˘" & Chr(34) & " nemohla b˝t vytvo¯ena! NalezenÈ PPAP dÌl˘ nebyly nikam zkopÌrov·ny!")
+If SlozkaNeexistuje = True Then MsgBox ("Slo≈æka " & Chr(34) & "PPAP komponent√π" & Chr(34) & " nemohla b√Ωt vytvo√∏ena! Nalezen√© PPAP d√≠l√π nebyly nikam zkop√≠rov√°ny!")
 
 ActiveWorkbook.Sheets(2).Range("C1").EntireColumn.AutoFit
 ActiveWorkbook.Sheets(2).Range("D1").EntireColumn.AutoFit
@@ -194,13 +194,13 @@ Private Sub KontrolaPPAP(Komponent As String, SlozkaNeexistuje As Boolean, i As 
         If objSoubor.Name Like "*.pdf" Then
           If InStr(1, objSoubor.Name, "KESapproved", vbTextCompare) > 0 Or InStr(1, objSoubor.Name, "KES approved", vbTextCompare) > 0 Then
             If SlozkaNeexistuje = False Then
-              objFSO.CopyFile "P:\PPAP_nakupovane dily\" & Komponent & "\" & objSoubor.Name, "C:\Users\" & Uzivatel & "\Desktop\PPAP komponent˘\" & Vytvoreni & "\PPAP_" & Komponent & ".pdf"
-              ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Soubor byl zkopÌrov·n na plochu do sloûky " & Chr(34) & "PPAP komponent˘\" & Vytvoreni & Chr(34) & "."
-              ActiveWorkbook.Sheets(2).Cells(i, 4).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 4), Address:="C:\Users\" & Uzivatel & "\Desktop\PPAP komponent˘\" & Vytvoreni & "\PPAP_" & Komponent & ".pdf", TextToDisplay:="PPAP_" & Komponent & ".pdf"
+              objFSO.CopyFile "P:\PPAP_nakupovane dily\" & Komponent & "\" & objSoubor.Name, "C:\Users\" & Uzivatel & "\Desktop\PPAP komponent√π\" & Vytvoreni & "\PPAP_" & Komponent & ".pdf"
+              ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Soubor byl zkop√≠rov√°n na plochu do slo≈æky " & Chr(34) & "PPAP komponent√π\" & Vytvoreni & Chr(34) & "."
+              ActiveWorkbook.Sheets(2).Cells(i, 4).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 4), Address:="C:\Users\" & Uzivatel & "\Desktop\PPAP komponent√π\" & Vytvoreni & "\PPAP_" & Komponent & ".pdf", TextToDisplay:="PPAP_" & Komponent & ".pdf"
               ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbGreen
               ChybiPPAP = False
             Else
-              ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Soubor nebyl zkopÌrov·n!"
+              ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Soubor nebyl zkop√≠rov√°n!"
               ActiveWorkbook.Sheets(2).Cells(i, 4).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 4), Address:="P:\PPAP_nakupovane dily\" & Komponent & "\" & objSoubor.Name, TextToDisplay:=objSoubor.Name
               ActiveWorkbook.Sheets(2).Cells(i, 6).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 6), Address:="P:\PPAP_nakupovane dily\" & Komponent, TextToDisplay:="P:\PPAP_nakupovane dily\" & Komponent
               ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbGreen
@@ -219,17 +219,17 @@ Private Sub KontrolaPPAP(Komponent As String, SlozkaNeexistuje As Boolean, i As 
       If ChybiPPAP = True Then
         If objSoubor.Name Like "*.pdf" Then
           If SlozkaNeexistuje = False Then
-            objFSO.CopyFile "P:\PPAP_nakupovane dily\" & Komponent & "\" & objSoubor.Name, "C:\Users\" & Uzivatel & "\Desktop\PPAP komponent˘\" & Vytvoreni & "\Zkontroluj PPAP_" & Komponent & ".pdf"
-            ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Byl nalezen pouze jeden soubor, kter˝ byl zkopÌrov·n na plochu do sloûky " & Chr(34) & "PPAP komponent˘\" & Vytvoreni & Chr(34) & "."
-            ActiveWorkbook.Sheets(2).Cells(i, 4).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 4), Address:="C:\Users\" & Uzivatel & "\Desktop\PPAP komponent˘\" & Vytvoreni & "\" & "Zkontroluj PPAP_" & Komponent & ".pdf", TextToDisplay:="Zkontroluj PPAP_" & Komponent & ".pdf"
-            ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Zkontroluj, zda tento soubor je skuteËnÏ PPAP danÈho dÌlu. Pokud ano, p¯ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & "."
+            objFSO.CopyFile "P:\PPAP_nakupovane dily\" & Komponent & "\" & objSoubor.Name, "C:\Users\" & Uzivatel & "\Desktop\PPAP komponent√π\" & Vytvoreni & "\Zkontroluj PPAP_" & Komponent & ".pdf"
+            ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Byl nalezen pouze jeden soubor, kter√Ω byl zkop√≠rov√°n na plochu do slo≈æky " & Chr(34) & "PPAP komponent√π\" & Vytvoreni & Chr(34) & "."
+            ActiveWorkbook.Sheets(2).Cells(i, 4).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 4), Address:="C:\Users\" & Uzivatel & "\Desktop\PPAP komponent√π\" & Vytvoreni & "\" & "Zkontroluj PPAP_" & Komponent & ".pdf", TextToDisplay:="Zkontroluj PPAP_" & Komponent & ".pdf"
+            ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Zkontroluj, zda tento soubor je skute√®n√¨ PPAP dan√©ho d√≠lu. Pokud ano, p√∏ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & "."
             ActiveWorkbook.Sheets(2).Cells(i, 6).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 6), Address:="P:\PPAP_nakupovane dily\" & Komponent, TextToDisplay:="P:\PPAP_nakupovane dily\" & Komponent
             ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbYellow
             ChybiPPAP = False
           Else
-            ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Byl nalezen pouze jeden soubor, kter˝ nebyl nikam zkopÌrov·n!"
+            ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Byl nalezen pouze jeden soubor, kter√Ω nebyl nikam zkop√≠rov√°n!"
             ActiveWorkbook.Sheets(2).Cells(i, 4).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 4), Address:="P:\PPAP_nakupovane dily\" & Komponent & "\" & objSoubor.Name, TextToDisplay:=objSoubor.Name
-            ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Zkontroluj, zda tento soubor je skuteËnÏ PPAP danÈho dÌlu. Pokud ano, p¯ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & "."
+            ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Zkontroluj, zda tento soubor je skute√®n√¨ PPAP dan√©ho d√≠lu. Pokud ano, p√∏ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & "."
             ActiveWorkbook.Sheets(2).Cells(i, 6).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 6), Address:="P:\PPAP_nakupovane dily\" & Komponent, TextToDisplay:="P:\PPAP_nakupovane dily\" & Komponent
             ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbYellow
             ChybiPPAP = False
@@ -287,13 +287,13 @@ Private Sub KontrolaPPAP(Komponent As String, SlozkaNeexistuje As Boolean, i As 
             If objAktSoubor.Name Like "*.pdf" Then
               If InStr(1, objAktSoubor.Name, "KESapproved", vbTextCompare) > 0 Or InStr(1, objAktSoubor.Name, "KES approved", vbTextCompare) > 0 Then
                 If SlozkaNeexistuje = False Then
-                  objFSO.CopyFile "P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice) & "\" & objAktSoubor.Name, "C:\Users\" & Uzivatel & "\Desktop\PPAP komponent˘\" & Vytvoreni & "\PPAP_" & Komponent & ".pdf"
-                  ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Soubor byl zkopÌrov·n na plochu do sloûky " & Chr(34) & "PPAP komponent˘\" & Vytvoreni & Chr(34) & "."
-                  ActiveWorkbook.Sheets(2).Cells(i, 4).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 4), Address:="C:\Users\" & Uzivatel & "\Desktop\PPAP komponent˘\" & Vytvoreni & "\PPAP_" & Komponent & ".pdf", TextToDisplay:="PPAP_" & Komponent & ".pdf"
+                  objFSO.CopyFile "P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice) & "\" & objAktSoubor.Name, "C:\Users\" & Uzivatel & "\Desktop\PPAP komponent√π\" & Vytvoreni & "\PPAP_" & Komponent & ".pdf"
+                  ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Soubor byl zkop√≠rov√°n na plochu do slo≈æky " & Chr(34) & "PPAP komponent√π\" & Vytvoreni & Chr(34) & "."
+                  ActiveWorkbook.Sheets(2).Cells(i, 4).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 4), Address:="C:\Users\" & Uzivatel & "\Desktop\PPAP komponent√π\" & Vytvoreni & "\PPAP_" & Komponent & ".pdf", TextToDisplay:="PPAP_" & Komponent & ".pdf"
                   ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbGreen
                   ChybiPPAP = False
                 Else
-                  ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Soubor nebyl zkopÌrov·n!"
+                  ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Soubor nebyl zkop√≠rov√°n!"
                   ActiveWorkbook.Sheets(2).Cells(i, 4).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 4), Address:="P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice) & "\" & objAktSoubor.Name, TextToDisplay:=objAktSoubor.Name
                   ActiveWorkbook.Sheets(2).Cells(i, 6).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 6), Address:="P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice), TextToDisplay:="P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice)
                   ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbGreen
@@ -310,17 +310,17 @@ Private Sub KontrolaPPAP(Komponent As String, SlozkaNeexistuje As Boolean, i As 
             If ChybiPPAP = True Then
               If objAktSoubor.Name Like "*.pdf" Then
                 If SlozkaNeexistuje = False Then
-                  objFSO.CopyFile "P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice) & "\" & objAktSoubor.Name, "C:\Users\" & Uzivatel & "\Desktop\PPAP komponent˘\" & Vytvoreni & "\Zkontroluj PPAP_" & Komponent & ".pdf"
-                  ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Byl nalezen pouze jeden soubor, kter˝ byl zkopÌrov·n na plochu do sloûky " & Chr(34) & "PPAP komponent˘\" & Vytvoreni & Chr(34) & "."
-                  ActiveWorkbook.Sheets(2).Cells(i, 4).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 4), Address:="C:\Users\" & Uzivatel & "\Desktop\PPAP komponent˘\" & Vytvoreni & "\Zkontroluj PPAP_" & Komponent & ".pdf", TextToDisplay:="Zkontroluj PPAP_" & Komponent & ".pdf"
-                  ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Zkontroluj, zda tento soubor je skuteËnÏ PPAP danÈho dÌlu. Pokud ano, p¯ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & "."
+                  objFSO.CopyFile "P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice) & "\" & objAktSoubor.Name, "C:\Users\" & Uzivatel & "\Desktop\PPAP komponent√π\" & Vytvoreni & "\Zkontroluj PPAP_" & Komponent & ".pdf"
+                  ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Byl nalezen pouze jeden soubor, kter√Ω byl zkop√≠rov√°n na plochu do slo≈æky " & Chr(34) & "PPAP komponent√π\" & Vytvoreni & Chr(34) & "."
+                  ActiveWorkbook.Sheets(2).Cells(i, 4).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 4), Address:="C:\Users\" & Uzivatel & "\Desktop\PPAP komponent√π\" & Vytvoreni & "\Zkontroluj PPAP_" & Komponent & ".pdf", TextToDisplay:="Zkontroluj PPAP_" & Komponent & ".pdf"
+                  ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Zkontroluj, zda tento soubor je skute√®n√¨ PPAP dan√©ho d√≠lu. Pokud ano, p√∏ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & "."
                   ActiveWorkbook.Sheets(2).Cells(i, 6).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 6), Address:="P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice), TextToDisplay:="P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice)
                   ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbYellow
                   ChybiPPAP = False
                 Else
-                  ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Byl nalezen pouze jeden soubor, kter˝ nebyl nikam zkopÌrov·n!"
+                  ActiveWorkbook.Sheets(2).Cells(i, 3).Value = "Byl nalezen pouze jeden soubor, kter√Ω nebyl nikam zkop√≠rov√°n!"
                   ActiveWorkbook.Sheets(2).Cells(i, 4).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 4), Address:="P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice) & "\" & objAktSoubor.Name, TextToDisplay:=objAktSoubor.Name
-                  ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Zkontroluj, zda tento soubor je skuteËnÏ PPAP danÈho dÌlu. Pokud ano, p¯ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & "."
+                  ActiveWorkbook.Sheets(2).Cells(i, 5).Value = "Zkontroluj, zda tento soubor je skute√®n√¨ PPAP dan√©ho d√≠lu. Pokud ano, p√∏ejmenuj tento soubor, aby obsahoval slovo " & Chr(34) & "_KESapproved" & Chr(34) & "."
                   ActiveWorkbook.Sheets(2).Cells(i, 6).Hyperlinks.Add Anchor:=ActiveWorkbook.Sheets(2).Cells(i, 6), Address:="P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice), TextToDisplay:="P:\PPAP_nakupovane dily\" & Komponent & "\" & CelyNazevSlozky(Pozice)
                   ActiveWorkbook.Sheets(2).Cells(i, 4).Interior.Color = vbYellow
                   ChybiPPAP = False
@@ -345,7 +345,7 @@ Function StripAccent(strstring As String)
   Dim Diakritika As String
   Dim BezDiakritiky As String
   Dim i As Integer
-  Const AccChars = "ÏöË¯û˝·ÌÈÛÔùÚ˙˘Ãä»ÿé›¡Õ…”œç“⁄ŸQWERTZUIOPASDFGHJKLYXCVBNM"
+  Const AccChars = "√¨≈°√®√∏≈æ√Ω√°√≠√©√≥√Ø¬ù√≤√∫√π√å≈†√à√ò≈Ω√ù√Å√ç√â√ì√è¬ç√í√ö√ôQWERTZUIOPASDFGHJKLYXCVBNM"
   Const RegChars = "escrzyaieodtnuuescrzyaieodtnuuqwertzuiopasdfghjklyxcvbnm"
   For i = 1 To Len(AccChars)
     Diakritika = Mid(AccChars, i, 1)
@@ -353,20 +353,5 @@ Function StripAccent(strstring As String)
     strstring = Replace(strstring, Diakritika, BezDiakritiky)
   Next
   StripAccent = strstring
-End Function
-
-Function OdstraneniDvojtecek(Vytvoreni As String)
-
-  Dim Dvojtecky As String
-  Dim BezDvojtecek As String
-  Dim i As Integer
-  Const AccChars = ":"
-  Const RegChars = "-"
-  For i = 1 To Len(AccChars)
-    Dvojtecky = Mid(AccChars, i, 1)
-    BezDvojtecek = Mid(RegChars, i, 1)
-    Vytvoreni = Replace(Vytvoreni, Dvojtecky, BezDvojtecek)
-  Next
-  OdstraneniDvojtecek = Vytvoreni
 End Function
 
